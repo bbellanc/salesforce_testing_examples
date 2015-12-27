@@ -1,0 +1,23 @@
+https://developer.salesforce.com/docs/atlas.en-us.fundamentals.meta/fundamentals/adg_securing_data_define_sharing_rule_try_it_out.htm
+
+To summarize what we'll be building:
+A workflow task that assigns a task to a recruiter when the status of a job application changes to Rejected or Extend an Offer
+ - Create a queue for a position ans assign to recruiter
+A workflow field update that reassigns ownership of a position that's created by a hiring manager to a queue of position records without owners, so that individual recruiters can claim ownership of the positions they want
+A workflow alert that sends an email to every employee when a new position is created
+
+
+Suppose your organization has a three-tier process for approving expenses. With an approval process, you specify how to automatically handle each request and who in your organization must review the expense, based on the amount requested.
+If an expense record is submitted for approval, lock the record so that users cannot edit it and change the status to “Submitted.”
+If the amount is $50 or less, automatically approve the request.
+If the amount is greater than $50, send an approval request to the direct manager.
+If the amount is greater than $5,000 and the first approval request is approved, send an approval request to the Vice President.
+If all approval requests are approved, change the status to “Approved” and unlock the record.
+If any approval requests are rejected, change the status to “Rejected” and unlock the record.
+
+approval rules/ field updates
+
+h4UmnXjk7AsQnPD5PyAVVJdea
+
+users:
+https://developer.salesforce.com/docs/atlas.en-us.198.0.fundamentals.meta/fundamentals/adg_securing_data_create_users_try_it_out.htm?search_text=users
