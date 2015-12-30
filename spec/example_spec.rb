@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe 'Standard Candidate Layout' do
 
-  let(:standard_candidate_layout) { ActiveForce.sfdc_client.describe_layouts('Candidate__c').layouts.first }
+  let(:restforce_client) {RestForceClient.create_connection}
+  let(:standard_candidate_layout) { restforce_client.describe_layouts('Candidate__c').layouts.first }
 
 
   context 'information section' do
