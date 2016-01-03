@@ -15,7 +15,7 @@ ActiveForce.sfdc_client = RestForceClient.create_connection
 @browser.text_field(id: 'password').set 'Winter15'
 @browser.button(name: 'Login').click
 
-position_id = Position.find_by(name: 'QA Engineer').id
+position_id = Position.find_by(position_title: 'QA Engineer').id
 
 #goto straight to a record
 @browser.goto("https://na34.salesforce.com/#{position_id}")

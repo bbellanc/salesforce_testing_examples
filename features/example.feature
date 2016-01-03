@@ -9,7 +9,7 @@ Feature: Example
     Given I am a Universal Container recruiter
     When I send a new position for approval
     And my manager approves it
-    Then then the position is approved
+    Then the position is set to an open - approved status
 
   Scenario: Calculating Review Scores
     Given a job application for a position

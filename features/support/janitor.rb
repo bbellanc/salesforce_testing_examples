@@ -4,6 +4,7 @@ class Janitor
 
     def add_mess(mess)
       @@messes << mess
+      mess
     end
 
     def clean_messes

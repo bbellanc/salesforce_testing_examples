@@ -11,7 +11,7 @@ ActiveForce.sfdc_client = RestForceClient.create_connection
 position = Position.first
 
 #Or based on criteria
-qa_architect_position = Position.find_by(name: 'QA Architect')
+qa_architect_position = Position.find_by(position_title: 'QA Architect')
 
 #Use SOQL to find the record you need
 sr_beni_specialist_position = Position.find_by("name like '%Benefits Specialist'")

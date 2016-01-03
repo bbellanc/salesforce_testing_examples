@@ -1,8 +1,8 @@
 require 'models/position'
 class PositionMess
 
-  def initialize(position_name)
-    @position = Position.find_by(name: position_name)
+  def initialize(title)
+    @position = Position.find_by(title)
   end
 
   def clean

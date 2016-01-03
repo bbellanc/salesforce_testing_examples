@@ -1,6 +1,7 @@
 $LOAD_PATH << File.join(__dir__, '..', '..')
 
 require 'activeforce'
+require 'page-object'
 require 'restforce_client'
 require 'mail'
 
@@ -15,3 +16,5 @@ end
 
 #Establish the client
 ActiveForce.sfdc_client = RestForceClient.create_connection
+
+World PageObject::PageFactory
