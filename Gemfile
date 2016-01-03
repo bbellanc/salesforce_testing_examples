@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'active_force'
+gem 'activeforce', git: 'https://github.com/bellanc/activeforce.git'
+# gem 'page-object-salesforce', git: 'https://github.com/bellanc/page-object-salesforce.git'
 gem 'rspec'
 gem 'cucumber'
 gem 'watir-webdriver'
 gem 'page-object'
 gem 'mail'
-gem 'chromedriver-helper'
 gem 'awesome_print'

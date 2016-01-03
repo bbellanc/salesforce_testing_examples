@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift(File.join(__dir__, '..'))
 require 'awesome_print'
-require 'active_force'
+require 'activeforce'
 require 'restforce_client'
 require 'models/position'
 require 'models/employment_website'
@@ -28,15 +28,14 @@ qa_architect_position.requires_java = false
 qa_architect_position.save
 
 #create new objects
-new_employment_website = EmploymentWebsite.create(
+new_employment_website = EmploymentWebsite.create!(
     name: 'Craigslist',
     web_address: 'craigslist.com',
     price_per_post: 1,
     maximum_budget: 12)
 
-
 # delete an object
-new_employment_website.destroy!
+new_employment_website.destroy
 
 
 

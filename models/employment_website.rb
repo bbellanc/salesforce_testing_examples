@@ -1,5 +1,5 @@
 class EmploymentWebsite < ActiveForce::SObject
-
+  self.table_name = 'Employment_Website__c'
   field :name, from: 'Name'
   field :web_address
   field :price_per_post
@@ -7,8 +7,8 @@ class EmploymentWebsite < ActiveForce::SObject
 
 
   # Use any validation from active record.
-  validates :web_address, format:({ with: /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/,
-                                    message: "invalid web address format." })
+  validates :web_address, format: ({with: /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/,
+                                    message: "invalid web address format."})
 
   validates :web_address, :price_per_post, presence: true
 

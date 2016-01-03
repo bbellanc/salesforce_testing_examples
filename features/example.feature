@@ -1,5 +1,10 @@
 Feature: Example
 
+  Scenario: Assigning a position from the queue
+    When a new position is created
+    Then the position is assigned to the queue
+    And the recruiters are emailed an assignment for that position
+
   Scenario: Approving a new Position
     Given I am a Universal Container recruiter
     When I send a new position for approval
@@ -13,5 +18,5 @@ Feature: Example
     Then the job application is updated with the number of reviews
     And the job application is updated with the average score of the reviews
 
-  Scenario: Assigning a position from the queue
+
 
