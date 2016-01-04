@@ -81,7 +81,7 @@ When(/^I write a review for the application$/) do
   visit(LoginPage).login_as_recruiter
   on(HomePage).search_salesforce_for(@job_application.name)
   on(SearchPage).open_job_application(@job_application.name)
-  on(JobApplicationPage).new_review
+  on(JobApplicationPage).create_new_review
   @review_1_rating = 4
   on(ReviewPage).rating = @review_1_rating
   on(ReviewPage).save_review
@@ -91,8 +91,7 @@ And(/^another interviewer writes a review$/) do
   visit(LoginPage).login_as_recruiting_manager
   on(HomePage).search_salesforce_for(@job_application.name)
   on(SearchPage).open_job_application(@job_application.name)
-  on(JobApplicationPage).new_review
-
+  on(JobApplicationPage).create_new_review
   @review_2_rating = 5
   on(ReviewPage).rating = @review_2_rating
   on(ReviewPage).save_review

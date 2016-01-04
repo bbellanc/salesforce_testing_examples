@@ -1,5 +1,6 @@
 class JobApplicationPage
   include PageObject
+  include PageObject::PageFactory
 
   button(:new_review ,value: 'New Review')
   sf_field(:total_rating, sflabel: 'Total Rating')
@@ -11,8 +12,9 @@ class JobApplicationPage
     BigDecimal.new self.average_rating
   end
 
-
   def create_new_review
-
+    self.new_review
+    self.wait_until { on(ReviewPage).rating }
   end
+
 end
