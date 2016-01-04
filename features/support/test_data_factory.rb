@@ -1,3 +1,5 @@
+require 'models/candidate'
+
 class TestDataFactory
   class << self
 
@@ -7,17 +9,19 @@ class TestDataFactory
                                       functional_area: 'Information Technology',
                                       job_level: 'IT-300',
                                       min_pay: 80500,
-                                      max_pay: 95000
-      )
+                                      max_pay: 95000).reload
       Janitor.add_mess(PositionMess.new('SQL Guy'))
+      sleep(5)
       new_position
     end
 
     def create_job_application(position, candidate=Candidate.first.id)
       new_job_application = JobApplication.create!(position: position,
                                                    candidate: candidate,
-                                                   status: 'New')
+                                                   status: 'New').reload
+
       Janitor.add_mess(JobApplicationMess.new(new_job_application.name))
+      sleep(25)
       new_job_application
     end
 

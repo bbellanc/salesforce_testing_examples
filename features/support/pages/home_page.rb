@@ -7,8 +7,8 @@ class HomePage
   div(:create_new_object, id: 'createNewButton')
   img(:create_new_position, title: 'Position')
 
-  text_field(:search_bar, id: '')
-  button(:search, id: '')
+  text_field(:search_bar, id: 'phSearchInput')
+  button(:search, id: 'phSearchButton')
 
   def create_position_from_create_new_sidebar
     self.create_new_object_element.click

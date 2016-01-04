@@ -74,24 +74,37 @@ end
 
 Given(/^a job application for a position$/) do
   @position = TestDataFactory.create_position
-  @job_application = TestDataFactory.create_job_application(@position.id)
+  @job_application = TestDataFactory.create_job_application(@position)
 end
 
 When(/^I write a review for the application$/) do
   visit(LoginPage).login_as_recruiter
   on(HomePage).search_salesforce_for(@job_application.name)
-  on(SearchPage).open_search_result(@job_application.name)
+  on(SearchPage).open_job_application(@job_application.name)
+  on(JobApplicationPage).new_review
+  @review_1_rating = 4
+  on(ReviewPage).rating = @review_1_rating
+  on(ReviewPage).save_review
 end
 
 And(/^another interviewer writes a review$/) do
-  pending
+  visit(LoginPage).login_as_recruiting_manager
+  on(HomePage).search_salesforce_for(@job_application.name)
+  on(SearchPage).open_job_application(@job_application.name)
+  on(JobApplicationPage).new_review
+
+  @review_2_rating = 5
+  on(ReviewPage).rating = @review_2_rating
+  on(ReviewPage).save_review
 end
 
 Then(/^the job application is updated with the number of reviews$/) do
-  pending
+  on(ReviewPage).job_application
+  expect(on(JobApplicationPage).number_of_reviews).to eq "2"
 end
 
 And(/^the job application is updated with the average score of the reviews$/) do
-  pending
+  expected_average = BigDecimal(@review_1_rating + @review_2_rating)/2
+  expect(on(JobApplicationPage).calculated_average_rating).to eq expected_average
 end
 

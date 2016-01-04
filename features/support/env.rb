@@ -2,6 +2,7 @@ $LOAD_PATH << File.join(__dir__, '..', '..')
 
 require 'activeforce'
 require 'page-object'
+require 'page-object-salesforce'
 require 'restforce_client'
 require 'mail'
 
