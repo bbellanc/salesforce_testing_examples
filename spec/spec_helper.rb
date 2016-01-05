@@ -7,6 +7,4 @@ require 'models/position'
 require 'models/candidate'
 require 'models/user'
 
-client = RestForceClient.create_connection
-
-ActiveForce.sfdc_client = client
+ActiveForce.sfdc_client = RestForceClient.create_connection

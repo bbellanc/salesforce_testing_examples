@@ -15,7 +15,6 @@ end
 #Establish a connection
 restforce_client = Restforce.new username: connected_app[:credentials][:username],
                                  password: connected_app[:credentials][:password],
-
                                  security_token: connected_app[:credentials][:security_token]
 
 #Query with SOQL

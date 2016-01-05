@@ -1,12 +1,18 @@
 class RestForceClient
 
   def self.create_connection
-    Restforce.configure { |config| config.api_version = "28.0" }
-    restforce_client = Restforce.new username: 'branden.bellanca@gmail.com.dev',
-                                     password: 'Winter15',
-                                     client_id: '3MVG9KI2HHAq33RwG7rR_eq2UKqu0BLtoI7kGUAc5pDpRAF7mVmUrOw4WdcMzVjaUSpAqqzq0yfv4kVowu3kM',
-                                     client_secret: '8335121312097991471',
-                                     security_token: 'gje3S5L1NemTEZQLJlyH4XNRS'
+    #Configure Restforce with your connected app
+    Restforce.configure do |config|
+      config.api_version = "28.0"
+      config.client_id = connected_app[:app][:client_id]
+      config.client_secret = connected_app[:app][:client_secret]
+    end
+
+    #Establish a connection
+    Restforce.new username: connected_app[:credentials][:username],
+                  password: connected_app[:credentials][:password],
+                  security_token: connected_app[:credentials][:security_token]
   end
 end
+
 
