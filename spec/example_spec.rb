@@ -9,6 +9,7 @@ describe 'Standard Candidate Layout' do
     let(:information_section) { edit_candidate_layout.find { |section| section.heading == 'Information' } }
 
     context 'Email' do
+
       let(:email_field) do
         information_section.layoutRows.map do |row|
           row.layoutItems.find { |field| field.label == 'Email' }
@@ -18,10 +19,14 @@ describe 'Standard Candidate Layout' do
       let(:email_field_details) { email_field.layoutComponents.first.details }
 
       #Verifies that field on layout is required
-      it { expect(email_field).to be_required }
+      it '' do
+        expect(email_field).to be_required
+      end
 
       #Verifies that field is correct Saleforce object field type
-      it { expect(email_field_details.type).to eq 'email' }
+      it '' do
+        expect(email_field_details.type).to eq 'email'
+      end
 
     end
   end
