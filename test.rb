@@ -9,9 +9,9 @@ class PositionPage
 
   self.sfdc_object_label_name = 'Position'
 
-  sfdc_field :job_level, 'Job Level'
-  sfdc_field :status, 'Status'
-  sfdc_field :hiring_manager, 'Hiring Manager'
+  sfdc_field :job_level, sfdc_label: 'Job Level'
+  sfdc_field :status, sfdc_label: 'Status'
+  sfdc_field :hiring_manager, sfdc_label: 'Hiring Manager'
 end
 
 @browser = Watir::Browser.new :chrome
