@@ -13,7 +13,7 @@ describe 'Standard Candidate Layout' do
     #Collection the metadata for the `Information` section of the layout
     let(:information_section) { edit_candidate_layout.find { |section| section.heading == 'Information' } }
 
-    context 'Email' do
+    context 'Email Field' do
 
       #Grabing the `Email` field metadata from the `Information` section
       let(:email_field) do
@@ -22,7 +22,7 @@ describe 'Standard Candidate Layout' do
         end.compact.first
       end
 
-      #
+      #Getting Layout Details for the email field
       let(:email_field_details) { email_field.layoutComponents.first.details }
 
       #Verifies that field on layout is required
@@ -40,10 +40,12 @@ describe 'Standard Candidate Layout' do
 
   context 'Additional Information' do
 
-    subject { Candidate.picklist_values('Education__c').map(&:value) }
+    context 'Education Field' do
+      subject { Candidate.picklist_values('Education__c').map(&:value) }
 
-    #Verifies that the picklist has an intended value
-    it { is_expected.to include 'HS Diploma' }
+      #Verifies that the picklist has an intended value
+      it { is_expected.to include 'HS Diploma' }
+    end
   end
 end
 
