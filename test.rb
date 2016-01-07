@@ -1,45 +1,34 @@
-# require 'activeforce'
-# require_relative 'models/job_application'
-# require_relative 'models/position'
-# require_relative 'models/candidate'
-# require_relative 'models/user'
+require 'page-object'
+require_relative 'restforce_client'
+require 'page-force'
 
-# Restforce.configure do |config|
-#   config.api_version = "35.0"
-# end
-#
-# ActiveForce.sfdc_client = Restforce.new username: 'branden.bellanca@gmail.com.dev',
-#                                         password: 'Winter15',
-#                                         :client_id => '3MVG9KI2HHAq33RwG7rR_eq2UKqu0BLtoI7kGUAc5pDpRAF7mVmUrOw4WdcMzVjaUSpAqqzq0yfv4kVowu3kM',
-#                                         :client_secret => '8335121312097991471',
-#                                         security_token: 'gje3S5L1NemTEZQLJlyH4XNRS'
-#
-#
-# p ActiveForce.sfdc_client.describe 'User'
+PageForce::Config.sfdc_tooling_client = RestForceClient.establish_connection_to_tooling_api
 
-# require 'databasedotcom'
-#
-# client = Databasedotcom::Client.new :client_id => '3MVG9KI2HHAq33RwG7rR_eq2UKqu0BLtoI7kGUAc5pDpRAF7mVmUrOw4WdcMzVjaUSpAqqzq0yfv4kVowu3kM',
-#                                     :client_secret => '8335121312097991471',
-#                                     version: '28.0'
-#
-# client.instance_url = 'https://na34.salesforce.com'
-# client.authenticate :username => 'branden.bellanca@gmail.com.dev', :password => 'Winter15gje3S5L1NemTEZQLJlyH4XNRS'
-# p client.oauth_token
-#
-# client.materialize('Position__c')
-# client.materialize('Job_Application__c')
-#
-# puts Position.first.methods - Object.methods
+class PositionPage
+  include PageForce
 
-require 'mail'
+  self.sfdc_object_label_name = 'Position'
 
-Mail.defaults do
-  retriever_method :pop3, :address => "pop.gmail.com",
-                   :port       => 995,
-                   :user_name  => 'ucontainertest',
-                   :password   => 'Bellanca2468',
-                   :enable_ssl => true
+  sfdc_field :job_level, 'Job Level'
+  sfdc_field :status, 'Status'
+  sfdc_field :hiring_manager, 'Hiring Manager'
 end
 
-Mail.last.body
+@browser = Watir::Browser.new :chrome
+
+@browser.goto('login.salesforce.com')
+@browser.wait_until { @browser.text_field(id: 'username').exist? }
+@browser.text_field(id: 'username').set 'branden.bellanca@gmail.com.dev'
+@browser.text_field(id: 'password').set 'Winter15'
+@browser.button(name: 'Login').click
+@browser.wait_until {@browser.link(title: 'Positions Tab').exists?}
+@browser.link(title: 'Positions Tab').click
+page = PositionPage.new(@browser)
+page.job_level
+page.status
+page.hiring_manager
+
+
+at_exit do
+  @browser.close
+end

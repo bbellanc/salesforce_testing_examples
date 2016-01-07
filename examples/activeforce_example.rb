@@ -1,11 +1,10 @@
 $LOAD_PATH.unshift(File.join(__dir__, '..'))
-require 'awesome_print'
 require 'activeforce'
 require 'restforce_client'
 require 'models/position'
 require 'models/employment_website'
 
-ActiveForce.sfdc_client = RestForceClient.create_connection
+ActiveForce.sfdc_client = RestForceClient.establish_connection_to_rest_api
 
 #Get a Salesforce Record based on index
 Position.first

@@ -1,6 +1,8 @@
 class JobApplicationPage
-  include PageObject
+  include PageForce
   include PageObject::PageFactory
+
+  self.sfdc_object_label_name = 'Job Application'
 
   button(:new_review ,value: 'New Review')
   sf_field(:total_rating, sflabel: 'Total Rating')
