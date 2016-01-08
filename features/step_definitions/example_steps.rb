@@ -7,8 +7,8 @@ When(/^a new position is created$/) do
   #Logs into application
   @browser.goto('login.salesforce.com')
   @browser.wait_until { @browser.text_field(id: 'username').exist? }
-  @browser.text_field(id: 'username').set 'branden.bellanca@gmail.com.dev'
-  @browser.text_field(id: 'password').set 'Winter15'
+  @browser.text_field(id: 'username').set CONNECTED_APP_DATA[:credentials][:admin][:username]
+  @browser.text_field(id: 'password').set CONNECTED_APP_DATA[:credentials][:admin][:password]
   @browser.button(name: 'Login').click
 
   #Goes to the Home Page

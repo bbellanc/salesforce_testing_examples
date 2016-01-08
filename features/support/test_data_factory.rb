@@ -11,7 +11,7 @@ class TestDataFactory
                                       min_pay: 80500,
                                       max_pay: 95000).reload
       Janitor.add_mess(PositionMess.new('SQL Guy'))
-      sleep(5)
+      sleep(15)
       new_position
     end
 
@@ -21,7 +21,7 @@ class TestDataFactory
                                                    status: 'New').reload
 
       Janitor.add_mess(JobApplicationMess.new(new_job_application.name))
-      sleep(25)
+      sleep(35)
       new_job_application
     end
 

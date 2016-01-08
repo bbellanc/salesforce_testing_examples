@@ -10,16 +10,16 @@ class LoginPage
 
   def login_as_recruiter
     self.wait_until { self.username? }
-    self.username = 'recruiter@ucontainers.com'
-    self.password = 'Winter16'
+    self.username = CONNECTED_APP_DATA[:credentials][:recruiter][:username]
+    self.password = CONNECTED_APP_DATA[:credentials][:recruiter][:password]
     self.login
     self.wait_until { on(HomePage).create_new_object? }
   end
 
   def login_as_recruiting_manager
     self.wait_until { self.username? }
-    self.username = 'branden.bellanca@gmail.com.dev'
-    self.password = 'Winter15'
+    self.username = CONNECTED_APP_DATA[:credentials][:admin][:username]
+    self.password = CONNECTED_APP_DATA[:credentials][:admin][:password]
     self.login
     self.wait_until { on(HomePage).home_tab? }
     on(HomePage).home_tab

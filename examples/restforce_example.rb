@@ -14,9 +14,9 @@ Restforce.configure do |config|
 end
 
 #Establish a connection
-restforce_data_client = Restforce.new username: connected_app[:credentials][:username],
-                                 password: connected_app[:credentials][:password],
-                                 security_token: connected_app[:credentials][:security_token]
+restforce_data_client = Restforce.new username: connected_app[:credentials][:admin][:username],
+                                 password: connected_app[:credentials][:admin][:password],
+                                 security_token: connected_app[:credentials][:admin][:security_token]
 
 #Query with SOQL
 restforce_data_client.query('select id from Candidate__c')

@@ -12,9 +12,9 @@ class RestForceClient
     end
 
     #Establish a connection
-    Restforce.new username: connected_app[:credentials][:username],
-                  password: connected_app[:credentials][:password],
-                  security_token: connected_app[:credentials][:security_token]
+    Restforce.new username: connected_app[:credentials][:admin][:username],
+                  password: connected_app[:credentials][:admin][:password],
+                  security_token: connected_app[:credentials][:admin][:security_token]
   end
 
   def self.establish_connection_to_tooling_api
@@ -27,9 +27,9 @@ class RestForceClient
     end
 
     #Establish a connection
-    Restforce.tooling username: connected_app[:credentials][:username],
-                  password: connected_app[:credentials][:password],
-                  security_token: connected_app[:credentials][:security_token]
+    Restforce.tooling username: connected_app[:credentials][:admin][:username],
+                  password: connected_app[:credentials][:admin][:password],
+                  security_token: connected_app[:credentials][:admin][:security_token]
   end
 end
 
